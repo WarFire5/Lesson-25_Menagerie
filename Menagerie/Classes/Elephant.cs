@@ -1,8 +1,8 @@
 ﻿namespace Menagerie.Classes
 {
-    internal class Elephant : AbstractAnimal
+    public class Elephant : AbstractAnimal
     {
-        public Elephant(string name, double volumeFeedPerDay, int age)
+        public Elephant(string name, int volumeFeedPerDay, int age)
         {
             Type = "Слон";
             Biome = "Пустыня";
@@ -14,7 +14,7 @@
             VolumeFeedPerDay = volumeFeedPerDay;
             Age = age;
         }
-        public override void Eating(string food, double portionOfFeed)
+        public override void Eating(string food, int portionOfFeed)
         {
             if (food == "Сено" & portionOfFeed == 5)
             {

@@ -1,8 +1,8 @@
 ﻿namespace Menagerie.Classes
 {
-    internal class Penguin : AbstractAnimal
+    public class Penguin : AbstractAnimal
     {
-        public Penguin(string name, double volumeFeedPerDay, int age)
+        public Penguin(string name, int volumeFeedPerDay, int age)
         {
             Type = "Пингвин";
             Biome = "Тундра";
@@ -14,13 +14,13 @@
             VolumeFeedPerDay = volumeFeedPerDay;
             Age = age;
         }
-        public override void Eating(string food, double portionOfFeed)
+        public override void Eating(string food, int portionOfFeed)
         {
-            if (food == "Рыба")
+            if (food == "Рыба" & portionOfFeed == 1)
             {
                 Console.WriteLine($"{Name} покушал");
                 CounterOfSatiety += portionOfFeed;
-                if (CounterOfSatiety == 0.9)
+                if (CounterOfSatiety == 3)
                 {
                     Satiety = true;
                     Console.WriteLine($"{Name} сыт");
