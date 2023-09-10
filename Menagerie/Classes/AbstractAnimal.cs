@@ -14,7 +14,7 @@
         public int CounterOfSatiety { get; protected set; }
         public bool Satiety { get; protected set; }
 
-        public abstract void Eating(string food, int portionOfFeed);
+        public abstract bool Eating(string food, int portionOfFeed);
         public void MakeASound()
         {
             Console.WriteLine($"{Name} издал(а) звук {Sound}");

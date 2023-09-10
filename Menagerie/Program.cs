@@ -1,6 +1,8 @@
 ﻿using Menagerie.Classes;
 
 Elephant elephant = new Elephant("Матильда", 15, 20);
+//bool satiety = elephant.Eating("Сено", 5);
+//Console.WriteLine(satiety);
 elephant.Eating("Сено", 5);
 elephant.MakeASound();
 elephant.Eating("Торт", 5);

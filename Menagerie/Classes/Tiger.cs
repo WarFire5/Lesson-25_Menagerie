@@ -14,7 +14,7 @@
             VolumeFeedPerDay = volumeFeedPerDay;
             Age = age;
         }
-        public override void Eating(string food, int portionOfFeed)
+        public override bool Eating(string food, int portionOfFeed)
         {
             if (food == "Мясо" & portionOfFeed == 5)
             {
@@ -25,11 +25,18 @@
                     Satiety = true;
                     Console.WriteLine($"{Name} сыт");
                 }
+                else
+                {
+                    Satiety = false;
+                    Console.WriteLine($"{Name} не наелся");
+                }
             }
             else
             {
+                Satiety = false;
                 Console.WriteLine($"{Name} не стал есть");
             }
+            return Satiety;
         }
     }
 }

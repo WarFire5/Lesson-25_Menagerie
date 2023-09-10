@@ -9,18 +9,13 @@ namespace Menagerie.Tests.Classes
         /// </summary>
         /// <param name="expected"></param>
         /// <param name="food"></param>
-        /// <param name="oneMeal"></param>
-        [TestCase(true, "Рыба", false)]
-        [TestCase(false, "Хлеб", false)]
-        public void EatingTests(bool expected, string food, bool oneMeal)
+        [TestCase(1, "Рыба")]
+        [TestCase(0, "Хлеб")]
+        public void EatingTests(int expected, string food)
         {
             Penguin penguin = new Penguin("Петя", 3, 5);
             penguin.Eating(food, 1);
-            if (penguin.CounterOfSatiety == 1)
-            {
-                oneMeal = true;
-            }
-            bool actual = oneMeal;
+            int actual = penguin.CounterOfSatiety;
             Assert.AreEqual(expected, actual);
         }
 
@@ -31,6 +26,7 @@ namespace Menagerie.Tests.Classes
         /// <param name="food"></param>
         [TestCase(true, "Рыба")]
         [TestCase(false, "Хлеб")]
+        [TestCase(false, "Хлеб и Рыба")]
         public void EatingTests(bool expected, string food)
         {
             Penguin penguin = new Penguin("Петя", 3, 5);
