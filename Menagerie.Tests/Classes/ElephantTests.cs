@@ -5,17 +5,16 @@ namespace Menagerie.Tests.Classes
     public class ElephantTests
     {
         /// <summary>
-        /// Проверка одного приёма пищи
+        /// Проверка факта одного приёма пищи
         /// </summary>
         /// <param name="expected"></param>
         /// <param name="food"></param>
-        [TestCase(5, "Сено")]
-        [TestCase(0, "Торт")]
-        public void EatingTests(int expected, string food)
+        [TestCase("Сено", 5, true)]
+        [TestCase("Торт", 0, false)]
+        public void EatingPortionOfFeedTests(string food, int portionOfFeed, bool expected)
         {
-            Elephant elephant = new Elephant("Матильда", 15, 20);                       
-            elephant.Eating(food, 5);
-            int actual = elephant.CounterOfSatiety;
+            Elephant elephant = new Elephant("Матильда", 15, 20);
+            bool actual = elephant.EatingPortionOfFeed(food, portionOfFeed);
             Assert.AreEqual(expected, actual);
         }
 
@@ -24,15 +23,15 @@ namespace Menagerie.Tests.Classes
         /// </summary>
         /// <param name="expected"></param>
         /// <param name="food"></param>
-        [TestCase(true, "Сено")]
-        [TestCase(false, "Торт")]
-        [TestCase(false, "Сено и Торт")]
-        public void EatingTests(bool expected, string food)
+        [TestCase("Сено", true)]
+        [TestCase("Торт", false)]
+        [TestCase("Сено и Торт", false)]
+        public void SatietyCheckTests(string food, bool expected)
         {
             Elephant elephant = new Elephant("Матильда", 15, 20);
-            elephant.Eating(food, 5);
-            elephant.Eating(food, 5);
-            elephant.Eating(food, 5);
+            elephant.EatingPortionOfFeed(food, 5);
+            elephant.EatingPortionOfFeed(food, 5);
+            elephant.EatingPortionOfFeed(food, 5);
             bool actual = elephant.Satiety;
             Assert.AreEqual(expected, actual);
         }

@@ -14,29 +14,59 @@
             VolumeFeedPerDay = volumeFeedPerDay;
             Age = age;
         }
-        public override bool Eating(string food, int portionOfFeed)
+        public override bool EatingPortionOfFeed(string food, int portionOfFeed)
         {
             if (food == "Рыба" & portionOfFeed == 1)
             {
                 Console.WriteLine($"{Name} покушал");
-                CounterOfSatiety += portionOfFeed;
-                if (CounterOfSatiety == 3)
-                {
-                    Satiety = true;
-                    Console.WriteLine($"{Name} сыт");
-                }
-                else
-                {
-                    Satiety = false;
-                    Console.WriteLine($"{Name} не наелся");
-                }
+                Ate += portionOfFeed;
+                SatietyCheck();
+                return true;
             }
             else
             {
-                Satiety = false; 
                 Console.WriteLine($"{Name} не стал есть");
+            }
+            return false;
+        }
+        public bool SatietyCheck()
+        {
+            if (Ate == 3)
+            {
+                Satiety = true;
+                Console.WriteLine($"{Name} сыт");
+            }
+            else
+            {
+                Satiety = false;
+                Console.WriteLine($"{Name} не наелся");
             }
             return Satiety;
         }
+
+        ////2-й вариант разбивки метода на два
+        //public override bool EatingPortionOfFeed(string food, int portionOfFeed)
+        //{
+        //    if (food == "Рыба" & portionOfFeed == 1)
+        //    {
+        //        Console.WriteLine($"{Name} покушал");
+        //        Ate += portionOfFeed;
+        //        if (Ate == 3)
+        //        {
+        //            Satiety = true;
+        //            Console.WriteLine($"{Name} сыт");
+        //        }
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine($"{Name} не стал есть");
+        //    }
+        //    return false;
+        //}
+        //public bool SatietyCheck()
+        //{
+        //    return Satiety;
+        //}
     }
 }

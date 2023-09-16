@@ -1,32 +1,43 @@
 ﻿using Menagerie.Classes;
+using System.Xml.Linq;
+
+Console.WriteLine("Зверинец");
+Console.WriteLine();
 
 Elephant elephant = new Elephant("Матильда", 15, 20);
-//bool satiety = elephant.Eating("Сено", 5);
+//bool satiety = elephant.EatingPortionOfFeed("Сено", 5);
 //Console.WriteLine(satiety);
-elephant.Eating("Сено", 5);
+elephant.EatingPortionOfFeed("Сено", 5);
 elephant.MakeASound();
-elephant.Eating("Торт", 5);
-elephant.Eating("Сено", 5);
+elephant.EatingPortionOfFeed("Торт", 5);
+elephant.EatingPortionOfFeed("Сено", 5);
 elephant.Playing();
-elephant.Eating("Сено", 5);
+elephant.EatingPortionOfFeed("Сено", 5);
+//Console.WriteLine(elephant.SatietyCheck());
 Console.WriteLine();
 
 Penguin penguin = new Penguin("Петя", 3, 5);
-penguin.Eating("Рыба", 1);
+//bool satiety = penguin.EatingPortionOfFeed("Рыба", 1);
+//Console.WriteLine(satiety);
+penguin.EatingPortionOfFeed("Рыба", 1);
 penguin.MakeASound();
-penguin.Eating("Хлеб", 1);
-penguin.Eating("Рыба", 1);
+penguin.EatingPortionOfFeed("Хлеб", 1);
+penguin.EatingPortionOfFeed("Рыба", 1);
 penguin.Playing();
-penguin.Eating("Рыба", 1);
+penguin.EatingPortionOfFeed("Рыба", 1);
+//Console.WriteLine(penguin.SatietyCheck());
 Console.WriteLine();
 
 Tiger tiger = new Tiger("Симба", 15, 5);
-tiger.Eating("Мясо", 5);
+//bool satiety = tiger.EatingPortionOfFeed("Мясо", 5);
+//Console.WriteLine(satiety);
+tiger.EatingPortionOfFeed("Мясо", 5);
 tiger.MakeASound();
-tiger.Eating("Трава", 5);
-tiger.Eating("Мясо", 5);
+tiger.EatingPortionOfFeed("Трава", 5);
+tiger.EatingPortionOfFeed("Мясо", 5);
 tiger.Playing();
-tiger.Eating("Мясо", 5);
+tiger.EatingPortionOfFeed("Мясо", 5);
+//Console.WriteLine(tiger.SatietyCheck());
 Console.WriteLine();
 
 Console.ReadLine();

@@ -11,10 +11,10 @@
         public string Name { get; set; }
         public int VolumeFeedPerDay { get; set; }
         public int Age { get; set; }
-        public int CounterOfSatiety { get; protected set; }
+        public int Ate { get; protected set; }
         public bool Satiety { get; protected set; }
 
-        public abstract bool Eating(string food, int portionOfFeed);
+        public abstract bool EatingPortionOfFeed(string food, int portionOfFeed);
         public void MakeASound()
         {
             Console.WriteLine($"{Name} издал(а) звук {Sound}");

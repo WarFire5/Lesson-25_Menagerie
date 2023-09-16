@@ -14,29 +14,59 @@
             VolumeFeedPerDay = volumeFeedPerDay;
             Age = age;
         }
-        public override bool Eating(string food, int portionOfFeed)
+        public override bool EatingPortionOfFeed(string food, int portionOfFeed)
         {
             if (food == "Сено" & portionOfFeed == 5)
             {
                 Console.WriteLine($"{Name} покушала");
-                CounterOfSatiety += portionOfFeed;
-                if (CounterOfSatiety == 15)
-                {
-                    Satiety = true;
-                    Console.WriteLine($"{Name} сыта");
-                }
-                else
-                {
-                    Satiety = false;
-                    Console.WriteLine($"{Name} не наелась");
-                }
+                Ate += portionOfFeed;
+                SatietyCheck();
+                return true;
+            }
+            else
+            {
+                Console.WriteLine($"{Name} не стала есть");
+            }
+            return false;
+        }
+        public bool SatietyCheck()
+        {
+            if (Ate == 15)
+            {
+                Satiety = true;
+                Console.WriteLine($"{Name} сыта");
             }
             else
             {
                 Satiety = false;
-                Console.WriteLine($"{Name} не стала есть");
+                Console.WriteLine($"{Name} не наелась");
             }
             return Satiety;
         }
+
+        ////2-й вариант разбивки метода на два
+        //public override bool EatingPortionOfFeed(string food, int portionOfFeed)
+        //{
+        //    if (food == "Сено" & portionOfFeed == 5)
+        //    {
+        //        Console.WriteLine($"{Name} покушала");
+        //        Ate += portionOfFeed;
+        //        if (Ate == 15)
+        //        {
+        //            Satiety = true;
+        //            Console.WriteLine($"{Name} сыта");
+        //        }
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine($"{Name} не стала есть");
+        //    }
+        //    return false;
+        //}
+        //public bool SatietyCheck()
+        //{
+        //    return Satiety;
+        //}
     }
 }

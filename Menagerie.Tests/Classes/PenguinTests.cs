@@ -5,17 +5,16 @@ namespace Menagerie.Tests.Classes
     public class PenguinTests
     {
         /// <summary>
-        /// Проверка одного приёма пищи
+        /// Проверка факта одного приёма пищи
         /// </summary>
         /// <param name="expected"></param>
         /// <param name="food"></param>
-        [TestCase(1, "Рыба")]
-        [TestCase(0, "Хлеб")]
-        public void EatingTests(int expected, string food)
+        [TestCase("Рыба", 1, true)]
+        [TestCase("Хлеб", 0, false)]
+        public void EatingPortionOfFeedTests(string food, int portionOfFeed, bool expected)
         {
             Penguin penguin = new Penguin("Петя", 3, 5);
-            penguin.Eating(food, 1);
-            int actual = penguin.CounterOfSatiety;
+            bool actual = penguin.EatingPortionOfFeed(food, portionOfFeed);
             Assert.AreEqual(expected, actual);
         }
 
@@ -24,15 +23,15 @@ namespace Menagerie.Tests.Classes
         /// </summary>
         /// <param name="expected"></param>
         /// <param name="food"></param>
-        [TestCase(true, "Рыба")]
-        [TestCase(false, "Хлеб")]
-        [TestCase(false, "Хлеб и Рыба")]
-        public void EatingTests(bool expected, string food)
+        [TestCase("Рыба", true)]
+        [TestCase("Хлеб", false)]
+        [TestCase("Хлеб и Рыба", false)]
+        public void SatietyCheckTests(string food, bool expected)
         {
             Penguin penguin = new Penguin("Петя", 3, 5);
-            penguin.Eating(food, 1);
-            penguin.Eating(food, 1);
-            penguin.Eating(food, 1);
+            penguin.EatingPortionOfFeed(food, 1);
+            penguin.EatingPortionOfFeed(food, 1);
+            penguin.EatingPortionOfFeed(food, 1);
             bool actual = penguin.Satiety;
             Assert.AreEqual(expected, actual);
         }
